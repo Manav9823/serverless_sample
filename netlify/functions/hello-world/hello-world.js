@@ -3,7 +3,6 @@ const axios = require('axios')
 const brevoClientKey = 'hrg47x0s7k9e0le4uxx4m0si'
 
 const handler = async (event) => {
-  try {
     console.log('hii')
     // console.log(event)
     const subject = event.queryStringParameters.name || 'World'
@@ -26,21 +25,15 @@ const handler = async (event) => {
         }
     };
 
-    await axios
-        .request(options)
-        .then(function (response) {
+    return axios.request(options).then(function (response) {
           console.log('response from brevo manav', response);
           return {
             statusCode: 200,
             body: JSON.stringify({ message: `Hello ${subject}` }),
           }
-        })
-        .catch(function (error) {
+        }).catch(function (error) {
             console.error('error from brevo', error);
         });
-  } catch (error) {
-    return { statusCode: 500, body: error.toString() }
   }
-}
 
 module.exports = { handler }
