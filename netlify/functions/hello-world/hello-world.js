@@ -5,7 +5,7 @@ const brevoClientKey = 'hrg47x0s7k9e0le4uxx4m0si'
 const handler = async (event) => {
   try {
     console.log('hii')
-    console.log(event)
+    // console.log(event)
     const subject = event.queryStringParameters.name || 'World'
     const bodyRequest = JSON.parse(event.body)
     const email = bodyRequest.email
@@ -29,10 +29,10 @@ const handler = async (event) => {
     axios
         .request(options)
         .then(function (response) {
-            console.log(response.data);
+            console.log('response from brevo', response.data);
         })
         .catch(function (error) {
-            console.error(error);
+            console.error('error from brevo', error);
         });
     return {
       statusCode: 200,
