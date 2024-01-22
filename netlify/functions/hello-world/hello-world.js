@@ -29,7 +29,7 @@ const handler = async (event) => {
     await axios
         .request(options)
         .then(function (response) {
-          console.log('response from brevo', response.data);
+          console.log('response from brevo manav', response);
           return {
             statusCode: 200,
             body: JSON.stringify({ message: `Hello ${subject}` }),
